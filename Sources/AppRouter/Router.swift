@@ -1,4 +1,5 @@
 import SwiftUI
+import Observation
 
 /// A route is any value you push onto the navigation stack.
 public protocol Route: Hashable {}
@@ -9,19 +10,21 @@ public protocol Route: Hashable {}
 /// ```swift
 /// enum AppRoute: Route { case detail(id: String), settings }
 ///
-/// @StateObject private var router = Router<AppRoute>()
+/// @State private var router = Router<AppRoute>()
 ///
+/// @Bindable var router = router   // for the path binding
 /// NavigationStack(path: $router.path) {
 ///     HomeView()
 ///         .navigationDestination(for: AppRoute.self) { route in ... }
 /// }
-/// .environmentObject(router)
+/// .environment(router)
 /// ```
 @MainActor
-public final class Router<R: Route>: ObservableObject {
-    @Published public var path = NavigationPath()
-    @Published public var sheet: R?
-    @Published public var cover: R?
+@Observable
+public final class Router<R: Route> {
+    public var path = NavigationPath()
+    public var sheet: R?
+    public var cover: R?
 
     public init() {}
 

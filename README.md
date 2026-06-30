@@ -28,8 +28,9 @@ enum AppRoute: Route {
     case settings
 }
 
-@StateObject private var router = Router<AppRoute>()
+@State private var router = Router<AppRoute>()
 
+@Bindable var router = router
 NavigationStack(path: $router.path) {
     HomeView()
         .navigationDestination(for: AppRoute.self) { route in
@@ -39,7 +40,7 @@ NavigationStack(path: $router.path) {
             }
         }
 }
-.environmentObject(router)
+.environment(router)
 
 // Elsewhere
 router.push(.detail(id: "42"))
@@ -47,7 +48,7 @@ router.push(.detail(id: "42"))
 
 ## Requirements
 
-- iOS 16.0+ · Swift 5.9+
+- iOS 17.0+ · Swift 5.9+ (uses the Observation framework)
 
 ## License
 
