@@ -8,7 +8,9 @@ A lightweight, type-safe navigation coordinator for SwiftUI, built on `Navigatio
 
 ## Features
 
-- **`Router<Route>`** — an `ObservableObject` driving stack, sheet, and full-screen-cover.
+- **`Router<Route>`** — an `@Observable` driving stack, sheet, and full-screen-cover.
+- **`TabRouter<Tab>`** — tab selection with "reselect the active tab to pop to root".
+- **`DeepLinkResolver`** — try several `DeepLinkParser`s and navigate the first match.
 - `push` / `pop` / `popToRoot` and `present(sheet:)` / `present(cover:)` / `dismiss`.
 - Generic over your own `Route` enum — fully type-checked.
 
