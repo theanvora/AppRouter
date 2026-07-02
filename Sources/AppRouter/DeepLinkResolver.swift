@@ -1,3 +1,10 @@
+//
+//  DeepLinkResolver.swift
+//  AppRouter
+//
+//  Created by Anvora on 02/07/2026.
+//
+
 import Foundation
 
 /// Type-erased `DeepLinkParser`, so parsers of the same `Route` can be stored
